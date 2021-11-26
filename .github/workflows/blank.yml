@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: test-branch-name
+      - name: Validating branch name
         shell: bash
         run: | 
           echo Testing branch name: ${GITHUB_REF##*/}
@@ -27,7 +27,7 @@ jobs:
             echo " release/SWISCA-1234-short-description"
             exit 1
           fi
-      - name: test-title
+      - name: Validating title
         shell: bash
         run: | 
           echo Testing title: ${{ github.event.pull_request.title }}
