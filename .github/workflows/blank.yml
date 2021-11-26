@@ -14,8 +14,10 @@ jobs:
     steps:
       - name: Validating branch name
         shell: bash
-        run: | 
-          echo ${BASE_BRANCH}
+        run: |
+          echo "Pull request's base branch is: ${BASE_BRANCH}"
+        env:
+          BASE_BRANCH: ${{ github.base_ref }}
       - name: Validating branch name
         shell: bash
         run: | 
