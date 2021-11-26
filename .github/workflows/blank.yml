@@ -1,7 +1,10 @@
 name: Pull Request Validation
 
 on:
+  push:
   pull_request:
+    branches: 
+      - develop
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -17,6 +20,16 @@ jobs:
         run: |
           echo "Pull request's branch is: ${BRANCH}"
           echo "Pull request's base branch is: ${BASE_BRANCH}"
+          echo "ref ${{github.ref}}"
+          echo "title ${{ github.event.pull_request.title}}"
+          echo "event ${{github.event_name}}"
+          echo "ref ${GITHUB_REF##*/}"
+          echo "pr ref ${{ github.event.pull_request.base.ref }}"
+          echo "pr ref ${{ github.event.pull_request.base.ref }}"
+          echo "pr ref_name ${{ github.event.pull_request.base.ref_name }}"
+          echo "$GITHUB_BASE_REF"
+          echo "${GITHUB_REF##*/}"
+          echo "GITHUB_REF_NAME ${GITHUB_REF_NAME}"
         env:
           BASE_BRANCH: ${{ github.base_ref }}
           BRANCH: ${{ github.ref_name }}
