@@ -41,6 +41,8 @@ jobs:
           echo "pr ref ${{ github.event.pull_request.base.ref }}"
           echo "pr ref ${{ github.event.pull_request.base.ref }}"
           echo "pr ref_name ${{ github.event.pull_request.base.ref_name }}"
+          echo "$GITHUB_BASE_REF"
+          echo "${GITHUB_REF##*/}"
         env:
           BASE_BRANCH: ${{ github.base_ref }}
           BRANCH: ${{ github.ref_name }}
