@@ -20,6 +20,7 @@ jobs:
           echo "ref ${{github.ref}}"
           echo "title ${{ github.event.pull_request.title}}"
           echo "event ${{github.event_name}}"
+          echo "ref ${GITHUB_REF##*/}"
         env:
           BASE_BRANCH: ${{ github.base_ref }}
           BRANCH: ${{ github.ref_name }}
