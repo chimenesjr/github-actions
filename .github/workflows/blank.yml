@@ -12,9 +12,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      -name: Just pring
+      - name: Validating branch name
         shell: bash
-        run: |
+        run: | 
           echo ${BASE_BRANCH}
           echo ${{ github.event.pull_request.title }}
       - name: Validating branch name
