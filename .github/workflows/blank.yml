@@ -12,12 +12,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Validating branch name
+      - name: Echo values
         shell: bash
         run: |
+          echo "Pull request's branch is: ${BRANCH}"
           echo "Pull request's base branch is: ${BASE_BRANCH}"
         env:
           BASE_BRANCH: ${{ github.base_ref }}
+          BRANCH: ${{ github.ref_name }}
       - name: Validating branch name
         shell: bash
         run: | 
