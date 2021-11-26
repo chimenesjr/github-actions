@@ -25,7 +25,7 @@ jobs:
         shell: bash
         run: | 
           echo Testing branch name: ${GITHUB_REF##*/}
-          if [ "${GITHUB_REF##*/}" == "test-dev" ]; then
+          if [ "${GITHUB_REF##*/}" != "test-dev" ]; then
             echo "Branch name is wrong"
             exit 1
           fi
