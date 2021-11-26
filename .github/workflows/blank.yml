@@ -8,23 +8,6 @@ on:
 
 jobs:
 
-  job1:
-    name: Get working branch
-    runs-on: [ubuntu-latest]
-    outputs:
-      extract_branch: ${{ steps.extract_branch.outputs.branch }}
-    steps:
-      - name: Branch used
-        id: extract_branch
-        run: |
-          if [[ "${GITHUB_EVENT_NAME}" == "push" ]]; then
-            echo "::set-output name=branch::$(echo ${GITHUB_REF##*/})"
-          elif [[ "${GITHUB_EVENT_NAME}" == "pull_request" ]]; then
-            echo "::set-output name=branch::$(echo $GITHUB_BASE_REF)"
-          else
-            echo "::set-output name=branch::INVALID_EVENT_BRANCH_UNKNOWN"
-          fi
-
   validate:
     runs-on: ubuntu-latest
 
@@ -43,6 +26,7 @@ jobs:
           echo "pr ref_name ${{ github.event.pull_request.base.ref_name }}"
           echo "$GITHUB_BASE_REF"
           echo "${GITHUB_REF##*/}"
+          echo "GITHUB_REF_NAME ${GITHUB_REF_NAME}"
         env:
           BASE_BRANCH: ${{ github.base_ref }}
           BRANCH: ${{ github.ref_name }}
