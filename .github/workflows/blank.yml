@@ -15,7 +15,7 @@ jobs:
       - name: Validating branch name
         shell: bash
         run: | 
-          echo ${GITHUB_REF##*/}
+          echo ${{ github.event.pull_request.title }}
       - name: Validating branch name
         shell: bash
         run: | 
