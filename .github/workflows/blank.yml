@@ -17,6 +17,7 @@ jobs:
         run: |
           echo "Pull request's branch is: ${BRANCH}"
           echo "Pull request's base branch is: ${BASE_BRANCH}"
+          echo ${{github.ref}}
         env:
           BASE_BRANCH: ${{ github.base_ref }}
           BRANCH: ${{ github.ref_name }}
