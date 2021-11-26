@@ -11,7 +11,8 @@ on:
 
 jobs:
 
-  validate:
+  build:
+    name: validate
     runs-on: ubuntu-latest
 
     steps:
