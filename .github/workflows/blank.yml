@@ -25,7 +25,7 @@ jobs:
       - name: Extract branch name
         shell: bash
         run: echo running on branch ${GITHUB_REF##*/}
-      
+
       -name: Exit
         shell: bash
         run: exit 1
