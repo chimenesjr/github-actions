@@ -10,6 +10,10 @@ jobs:
   validate:
     env:
       BASE_BRANCH: ${{ github.base_ref }}
+      project1_name: "SWISCO-"
+      project2_name: "SWISCA-"
+      ticket_number_regex: "([1-9]|[1-9][0-9]|[1-9][0-9][0-9]|[1-9][0-9][0-9][0-9])"
+      pr_title: ${{ github.event.pull_request.title }}
     runs-on: ubuntu-latest
     steps:
 
@@ -35,10 +39,8 @@ jobs:
         run: | 
           echo Testing branch name: ${GITHUB_REF##*/}
 
-          project1="SWISCO-"
-          project2="SWISCA-"
-          ticket_number="([1-9]|[1-9][0-9]|[1-9][0-9][0-9]|[1-9][0-9][0-9][0-9])"
-          if [[ ! "${GITHUB_REF##*/}" =~ $project1$ticket_number && ! "${GITHUB_REF##*/}" =~ $project2$ticket_number ]]; then
+          
+          if [[ ! "${GITHUB_REF##*/}" =~ $project1_name$ticket_number_regex && ! "${GITHUB_REF##*/}" =~ $project2_name$ticket_number_regex ]]; then
             echo "Branch name should contain JIRA ticket, like..."
             echo " SWISCO-1234-short-description"
             echo " feature/SWISCO-1234-short-description"
@@ -48,5 +50,5 @@ jobs:
       - name: Validating title
         shell: bash
         run: | 
-          echo Testing title: ${{ github.event.pull_request.title }}
+          echo Testing title: $pr_title
 
