@@ -44,7 +44,9 @@ jobs:
       #       echo " release/SWISCA-1234-short-description"
       #       exit 1
       #     fi
-      # - name: Validating title
-      #   shell: bash
-      #   run: | 
-      #     echo Testing title: ${{ github.event.pull_request.title }}
+      - name: Validating title
+        shell: bash
+        run: | 
+          echo Testing title: ${{ github.event.pull_request.title }}
+          echo "Pull request's base branch is: ${BASE_BRANCH}"
+
