@@ -1,5 +1,6 @@
 on:
   push:
+  pull_request:
 
 name: Pull Request Validation
 
@@ -40,6 +41,7 @@ jobs:
 
       - name: Validating branch name
         shell: bash
+        if: ${{ github.event_name == 'push' }}
         run: | 
           echo "Testing branch name: ${BRANCH}"
           if [[ ! "$BRANCH" =~ $project1_name$ticket_number_regex && ! "$BRANCH" =~ $project2_name$ticket_number_regex ]]; then
