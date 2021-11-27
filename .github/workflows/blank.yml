@@ -37,8 +37,8 @@ jobs:
       - name: Validating branch name
         shell: bash
         run: | 
-          echo Testing branch name: ${BASE_BRANCH}
-          if [[ ! "${BASE_BRANCH}" =~ $project1_name$ticket_number_regex && ! "${BASE_BRANCH}" =~ $project2_name$ticket_number_regex ]]; then
+          echo Testing branch name: ${BRANCH}
+          if [[ ! "${BRANCH}" =~ $project1_name$ticket_number_regex && ! "${BRANCH}" =~ $project2_name$ticket_number_regex ]]; then
             echo "Branch name should contain JIRA ticket, like..."
             echo " SWISCO-1234-short-description"
             echo " feature/SWISCO-1234-short-description"
