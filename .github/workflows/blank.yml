@@ -8,6 +8,8 @@ name: Pull Request Validation
 
 jobs:
   validate:
+    env:
+      BASE_BRANCH: ${{ github.base_ref }}
     runs-on: ubuntu-latest
     steps:
 
@@ -27,7 +29,6 @@ jobs:
           echo "${GITHUB_REF##*/}"
           echo "GITHUB_REF_NAME ${GITHUB_REF_NAME}"
         env:
-          BASE_BRANCH: ${{ github.base_ref }}
           BRANCH: ${{ github.ref_name }}
       - name: Validating branch name
         shell: bash
