@@ -54,7 +54,7 @@ jobs:
 
       - name: Validating title
         shell: bash
-        if: $envet_type == "pull_request"
+        if: $event_type == "pull_request"
         run: | 
           echo "Testing title: ${pr_title}"
 
