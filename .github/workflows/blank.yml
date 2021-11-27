@@ -37,10 +37,8 @@ jobs:
       - name: Validating branch name
         shell: bash
         run: | 
-          echo Testing branch name: ${GITHUB_REF##*/}
-
-          
-          if [[ ! "${GITHUB_REF##*/}" =~ $project1_name$ticket_number_regex && ! "${GITHUB_REF##*/}" =~ $project2_name$ticket_number_regex ]]; then
+          echo Testing branch name: ${BASE_BRANCH}
+          if [[ ! "${BASE_BRANCH}" =~ $project1_name$ticket_number_regex && ! "${BASE_BRANCH}" =~ $project2_name$ticket_number_regex ]]; then
             echo "Branch name should contain JIRA ticket, like..."
             echo " SWISCO-1234-short-description"
             echo " feature/SWISCO-1234-short-description"
@@ -50,5 +48,5 @@ jobs:
       - name: Validating title
         shell: bash
         run: | 
-          echo Testing title: $pr_title
+          echo Testing title: ${pr_title}
 
