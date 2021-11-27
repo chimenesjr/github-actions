@@ -4,9 +4,6 @@ on:
 
 name: Pull Request Validation
 
-  # Allows you to run this workflow manually from the Actions tab
-  # workflow_dispatch:
-
 jobs:
   validate:
 
@@ -45,7 +42,7 @@ jobs:
         run: | 
           echo "Testing branch name: ${BRANCH}"
           if [[ ! "$BRANCH" =~ $project1_name$ticket_number_regex && ! "$BRANCH" =~ $project2_name$ticket_number_regex ]]; then
-            echo "Branch name should contain JIRA ticket, like..."
+            echo "The branch name must contain the JIRA ticket, like..."
             echo " SWISCO-1234-short-description"
             echo " feature/SWISCO-1234-short-description"
             echo " release/SWISCA-1234-short-description"
@@ -58,6 +55,13 @@ jobs:
         shell: bash
         if: ${{ github.event_name == 'pull_request' }}
         run: | 
-          echo "event ${{github.event_name}}"
           echo "Testing title: ${pr_title}"
+          if [[ ! "$pr_title" =~ $project1_name$ticket_number_regex && ! "$pr_title" =~ $project2_name$ticket_number_regex ]]; then
+            echo "The Pull Request title must contain the JIRA ticket, like..."
+            echo "SWISCO-1234 Title description of the change"
+            echo "Feature/SWISCO-1234 Title description of the change"
+            exit 1
+          else
+            echo "Title is good."
+          fi
 
