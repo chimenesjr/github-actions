@@ -54,7 +54,7 @@ jobs:
 
       - name: Validating title
         shell: bash
-        if: $event_type == "pull_request"
+        if: github.event_name == "pull_request"
         run: | 
           echo "Testing title: ${pr_title}"
 
