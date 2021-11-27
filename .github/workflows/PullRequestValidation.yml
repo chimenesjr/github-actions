@@ -56,7 +56,7 @@ jobs:
         if: ${{ github.event_name == 'pull_request' }}
         run: | 
           echo "Testing title: ${pr_title^^}"
-          if [[ ! "${pr_title^^}" =~ $project1_name$ticket_number_regex && ! "$pr_title" =~ $project2_name$ticket_number_regex ]]; then
+          if [[ ! "${pr_title^^}" =~ $project1_name$ticket_number_regex && ! "${pr_title^^}" =~ $project2_name$ticket_number_regex ]]; then
             echo "The Pull Request title must contain the JIRA ticket, like..."
             echo "SWISCO-1234 Title description of the change"
             echo "Feature/SWISCO-1234 Title description of the change"
