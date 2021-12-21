@@ -1,7 +1,7 @@
 on:
   push:
   pull_request:
-    types: [ created, edited ]
+    types: [ opened, edited ]
 
 name: Pull Request Validation
 
